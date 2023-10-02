@@ -64,7 +64,7 @@ export const deleteRepair = async (req, res) => {
     if (!repair) {
       return res.status(404).json({
         status: "error",
-        message: `Repair with id: ${id} not found for update`,
+        message: `Repair with id: ${id} not found for delete`,
       });
     }
     await repairService.deleteRepair(repair);

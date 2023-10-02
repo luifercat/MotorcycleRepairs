@@ -64,7 +64,7 @@ export const deleteUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({
         status: "error",
-        message: `User with id: ${id} not found for update`,
+        message: `User with id: ${id} not found for delete`,
       });
     }
     await userService.deleteUser(user);
