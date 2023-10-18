@@ -1,7 +1,16 @@
 import User from "./users.model.js";
 
 export class UserService {
-  async findOneUser(id) {
+  async findOneUser(email) {
+    return await User.findOne({
+      where: {
+        email,
+        status: "available",
+      },
+    });
+  }
+
+  async findOneUserId(id) {
     return await User.findOne({
       where: {
         id,
@@ -11,11 +20,7 @@ export class UserService {
   }
 
   async findAllUsers() {
-    return await User.findAll({
-      where: {
-        status: "available",
-      },
-    });
+    return await User.findAll({});
   }
 
   async createUser(data) {
@@ -27,6 +32,7 @@ export class UserService {
   }
 
   async deleteUser(user) {
+    console.log("user del serv--->  " + user.name);
     return await user.update({ status: "not available" });
   }
 }
